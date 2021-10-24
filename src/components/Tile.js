@@ -1,3 +1,4 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 const Wrapper = styled.button`
@@ -7,6 +8,9 @@ const Wrapper = styled.button`
   background-color: transparent;
   position: relative;
   cursor: pointer;
+  &:hover {
+
+  }
 `
 
 const Border = styled.div`
@@ -58,17 +62,25 @@ const Points = styled.div`
 `
 
 const Tooltip = styled.div`
-
+  position: absolute;
+  padding: 4px;
+  background-color: #333;
+  border-radius: 4px;
+  color: ${props => props.color};
+  top: -25px;
+  right: -25px;
 `
 
-const Tile = ({ active, max, selected, background, onClick }) => {
+const Tile = ({ active, max, selected, background, points, tooltip, onClick }) => {
+  const [isTooltipActive, setIsTooltipActive] = useState(false)
+
   return (
-    <Wrapper onClick={onClick}>
+    <Wrapper onClick={onClick} onMouseEnter={() => setIsTooltipActive(!isTooltipActive)} onMouseLeave={() => setIsTooltipActive(!isTooltipActive)}>
       <Background background={background} />
       <Border selected={selected} />
       <Highlight active={active} max={max} selected={selected} />
       <Points />
-      <Tooltip />
+      {isTooltipActive && <Tooltip color={tooltip && tooltip.color}>{tooltip && tooltip.content}</Tooltip>}
     </Wrapper>
   )
 }

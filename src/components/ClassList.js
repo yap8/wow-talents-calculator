@@ -12,6 +12,31 @@ const ClassItem = styled.li`
   }
 `
 
+const getClassColor = (className) => {
+  switch (className) {
+    case 'Druid':
+      return '#FF7C0A'
+    case 'Hunter':
+      return '#AAD372'
+    case 'Mage':
+      return '#3FC7EB'
+    case 'Paladin':
+      return '#F48CBA'
+    case 'Priest':
+      return '#FFFFFF'
+    case 'Rogue':
+      return '#FFF468'
+    case 'Shaman':
+      return '#0070DD'
+    case 'Warlock':
+      return '#8788EE'
+    case 'Warrior':
+      return '#C69B6D'
+    default:
+      return '#fff'
+  }
+}
+
 const ClassList = ({ classes, currentClass, setCurrentClass }) => {
   return (
     <Wrapper>
@@ -20,6 +45,7 @@ const ClassList = ({ classes, currentClass, setCurrentClass }) => {
           <Tile
             background={classItem.name.toLowerCase()}
             selected={classItem.id === currentClass}
+            tooltip={{ content: classItem.name, color: getClassColor(classItem.name)}}
             onClick={() => setCurrentClass(classItem.id)}
           />
         </ClassItem>
