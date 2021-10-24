@@ -2,6 +2,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components"
 import Tree from "./components/Tree"
 import ClassList from "./components/ClassList"
 import { useEffect, useState } from 'react'
+import Logo from "./components/Logo"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -38,9 +39,10 @@ const theme = {
 
 const Wrapper = styled.div`
   background-color: #111;
-  width: 750px;
-  height: 450px;
-  margin: 0 auto;
+  min-width: 750px;
+  min-height: 450px;
+  border-radius: 4px;
+  padding: 32px;
 `
 
 const App = () => {
@@ -64,6 +66,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Wrapper>
+        <Logo />
         <ClassList
           classes={classes}
           currentClass={currentClass}
