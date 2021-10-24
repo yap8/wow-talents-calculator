@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import ClassButton from "./ClassButton"
+import Tile from "./Tile"
 
 const Wrapper = styled.ul`
   display: flex;
@@ -17,12 +17,11 @@ const ClassList = ({ classes, currentClass, setCurrentClass }) => {
     <Wrapper>
       {classes.map(classItem => (
         <ClassItem key={classItem.id}>
-          <ClassButton
-            name={classItem.name}
-            id={classItem.id}
+          <Tile
+            background={classItem.name.toLowerCase()}
             selected={classItem.id === currentClass}
-            setCurrentClass={setCurrentClass}
-          ></ClassButton>
+            onClick={() => setCurrentClass(classItem.id)}
+          />
         </ClassItem>
       ))}
     </Wrapper>

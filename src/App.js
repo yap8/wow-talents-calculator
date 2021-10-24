@@ -3,6 +3,7 @@ import Tree from "./components/Tree"
 import ClassList from "./components/ClassList"
 import { useEffect, useState } from 'react'
 import Logo from "./components/Logo"
+import Tile from "./components/Tile"
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -54,7 +55,7 @@ const App = () => {
       const res = await fetch('data.json')
       const data = await res.json()
 
-      console.log(data.classes[currentClass])
+      console.log(data.classes)
 
       setClasses(data.classes)
     }
@@ -73,6 +74,9 @@ const App = () => {
           setCurrentClass={setCurrentClass}
         />
         <Tree talentTrees={classes.talentTrees} currentClass={currentClass} />
+        <Tile />
+        <Tile active />
+        <Tile max />
       </Wrapper>
     </ThemeProvider>
   )

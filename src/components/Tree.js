@@ -7,8 +7,6 @@ const Wrapper = styled.ul`
 `
 
 const Tree = ({ talentTrees }) => {
-  console.log(talentTrees)
-
   return (
     <Wrapper>
       <Spec title="Balance" points="0" />
