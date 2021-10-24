@@ -12,36 +12,19 @@ const ClassItem = styled.li`
   }
 `
 
-const ClassList = () => {
+const ClassList = ({ classes, currentClass, setCurrentClass }) => {
   return (
     <Wrapper>
-      <ClassItem>
-        <ClassButton icon="druid" selected></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="hunter"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="mage"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="paladin"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="priest"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="rogue"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="shaman"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="warlock"></ClassButton>
-      </ClassItem>
-      <ClassItem>
-        <ClassButton icon="warrior"></ClassButton>
-      </ClassItem>
+      {classes.map(classItem => (
+        <ClassItem key={classItem.id}>
+          <ClassButton
+            name={classItem.name}
+            id={classItem.id}
+            selected={classItem.id === currentClass}
+            setCurrentClass={setCurrentClass}
+          ></ClassButton>
+        </ClassItem>
+      ))}
     </Wrapper>
   )
 }

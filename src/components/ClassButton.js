@@ -44,10 +44,10 @@ const Highlight = styled.div`
   }
 `
 
-const ClassButton = ({ icon, selected }) => {
+const ClassButton = ({ name, selected, id, setCurrentClass }) => {
   return (
-    <Wrapper>
-      <Icon icon={icon} />
+    <Wrapper onClick={() => setCurrentClass(id)}>
+      <Icon icon={name} />
       <Border selected={selected} />
       <Highlight selected={selected} />
     </Wrapper>
